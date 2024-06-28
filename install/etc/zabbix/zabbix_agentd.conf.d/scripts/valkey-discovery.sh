@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# Author:   Lesovsky A.V.
-# Description:  Get values stored in Redis keys
+# Description:  Get values stored in Valkey keys
 
-getValues=$(redis-cli --raw $1 $2)
+getValues=$(valkey-cli --raw $1 $2)
 
 echo -n '{"data":['
 for value in $getValues; do echo -n "{\"{#VALUE}\": \"$value\"},"; done |sed -e 's:\},$:\}:'
