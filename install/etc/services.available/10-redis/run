@@ -1,8 +1,8 @@
 #!/command/with-contenv bash
 
 source /assets/functions/00-container
-prepare_service defaults 10-redis
-PROCESS_NAME="redis"
+prepare_service defaults 10-valkey
+PROCESS_NAME="valkey"
 
 check_container_initialized
 check_service_initialized init
@@ -10,34 +10,34 @@ check_service_initialized init
 liftoff
 
 if var_true "${ENABLE_LOGS}" ; then
-    redis_logs=" --logfile ${LOG_PATH}/${LOG_FILE}"
+    valkey_logs=" --logfile ${LOG_PATH}/${LOG_FILE}"
 fi
 
 if var_true "${ENABLE_PERSISTENCE}" ; then
-   redis_persistence="--appendonly yes"
+   valkey_persistence="--appendonly yes"
 fi
 
 if var_true "${ENABLE_SOCKET}" ; then
-	redis_socket="--unixsocket ${SOCKET_PATH}/${SOCKET_FILE} --unixsocketperm ${SOCKET_PERMISSIONS}"
+	valkey_socket="--unixsocket ${SOCKET_PATH}/${SOCKET_FILE} --unixsocketperm ${SOCKET_PERMISSIONS}"
 fi
 
-transform_file_var REDIS_PASS
-## Redis Setup
+transform_file_var VALKEY_PASS
+## Valkey Setup
 	# first arg is `-f` or `--some-option`
 	# or first arg is `something.conf`
 	if [ "${1#-}" != "$1" ] || [ "${1%.conf}" != "$1" ]; then
-		set -- redis-server "$@"
+		set -- valkey-server "$@"
 	fi
 
 	# allow the container to be started with `--user`
-	if [ "$1" = 'redis-server' -a "$(id -u)" = '0' ]; then
-		chown -R redis .
-		exec su-exec redis "$0" "$@"
+	if [ "$1" = 'valkey-server' -a "$(id -u)" = '0' ]; then
+		chown -R valkey .
+		exec su-exec valkey "$0" "$@"
 	fi
 
-print_start "Starting Redis ${REDIS_VERSION}"
-exec s6-setuidgid redis redis-server --dir "${DATA_PATH}" \
-                                     ${REDIS_PASS:+--requirepass $REDIS_PASS} \
+print_start "Starting Valkey ${VALKEY_VERSION}"
+exec s6-setuidgid valkey valkey-server --dir "${DATA_PATH}" \
+                                     ${VALKEY_PASS:+--requirepass $VALKEY_PASS} \
                                      --loglevel "${LOG_LEVEL}" \
-                                     --port ${REDIS_PORT} \
-				     				${redis_persistence} ${redis_logs} ${redis_socket}
+                                     --port ${VALKEY_PORT} \
+				     				${valkey_persistence} ${valkey_logs} ${valkey_socket}

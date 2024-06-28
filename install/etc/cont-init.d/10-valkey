@@ -2,22 +2,22 @@
 
 source /assets/functions/00-container
 prepare_service
-process_name="redis"
+process_name="valkey"
 
 mkdir -p "${LOG_PATH}"
 touch "${LOG_PATH}"/"${LOG_FILE}"
-chown -R redis:redis "${LOG_PATH}"/"${LOG_FILE}"
-create_logrotate redis "${LOG_PATH}"/"${LOG_FILE}" redis redis redis
+chown -R valkey:valkey "${LOG_PATH}"/"${LOG_FILE}"
+create_logrotate valkey "${LOG_PATH}"/"${LOG_FILE}" valkey valkey valkey
 
 if var_true "${ENABLE_SOCKET}" ; then
     mkdir -p "${SOCKET_PATH}"
-    chown -R redis:redis "${SOCKET_PATH}"
+    chown -R valkey:valkey "${SOCKET_PATH}"
     chmod ${SOCKET_PERMISSIONS} "${SOCKET_PATH}"
 fi
 
-create_zabbix redis
+create_zabbix valkey
 
 mkdir -p "${DATA_PATH}"
-chown -R redis:redis "${DATA_PATH}"
+chown -R valkey:valkey "${DATA_PATH}"
 
 liftoff

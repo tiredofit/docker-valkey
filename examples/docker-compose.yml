@@ -1,27 +1,21 @@
-version: '3.7'
 services:
-  
-  redis-app:
-    image: tiredofit/redis:5
-    container_name: redis-app
-    volumes:
-    - ./data:/data/db
-    #- ./logs:/data/logs
-    environment: 
-    - CONTAINER_NAME=redis-app
 
-    - ENABLE_LOGS=FALSE
-    - REDIS_PASS=password
+  valkey-app:
+    image: tiredofit/valkey
+    container_name: valkey-app
+    volumes:
+      - ./data:/data/db
+      #- ./logs:/data/logs
+    environment:
+      - CONTAINER_NAME=valkey-app
+
+      - ENABLE_LOGS=FALSE
+      - VALKEY_PASS=password
     networks:
-    - internal
-    - services
+      - services
     restart: always
 
 networks:
-  proxy:
-    external: true
-  internal:
-    external: false
   services:
     external: true
 

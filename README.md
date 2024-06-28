@@ -1,16 +1,16 @@
-# github.com/tiredofit/docker-redis
+# github.com/tiredofit/docker-valkey
 
 
-[![GitHub release](https://img.shields.io/github/v/tag/tiredofit/docker-redis?style=flat-square)](https://github.com/tiredofit/docker-redis/releases/latest)
-[![Build Status](https://img.shields.io/github/workflow/status/tiredofit/docker-redis/build?style=flat-square)](https://github.com/tiredofit/docker-redis/actions?query=workflow%3Abuild)
-[![Docker Stars](https://img.shields.io/docker/stars/tiredofit/redis.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/redis/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/tiredofit/redis.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/redis/)
+[![GitHub release](https://img.shields.io/github/v/tag/tiredofit/docker-valkey?style=flat-square)](https://github.com/tiredofit/docker-valkey/releases/latest)
+[![Build Status](https://img.shields.io/github/workflow/status/tiredofit/docker-valkey/build?style=flat-square)](https://github.com/tiredofit/docker-valkey/actions?query=workflow%3Abuild)
+[![Docker Stars](https://img.shields.io/docker/stars/tiredofit/valkey.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/valkey/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/tiredofit/valkey.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/valkey/)
 [![Become a sponsor](https://img.shields.io/badge/sponsor-tiredofit-181717.svg?logo=github&style=flat-square)](https://github.com/sponsors/tiredofit)
 [![Paypal Donate](https://img.shields.io/badge/donate-paypal-00457c.svg?logo=paypal&style=flat-square)](https://www.paypal.me/tiredofit)
 
 ## About
 
-This will build a Docker image for [Redis](https://www.redis.org) - a highly performant key value store.
+This will build a Docker image for [Valkey](https://www.valkey.io) - a highly performant key value store.
 
 ## Maintainer
 
@@ -56,15 +56,15 @@ No prerequisites
 Clone this repository and build the image with `docker build -t (imagename) .`
 
 ### Prebuilt Images
-Builds of the image are available on [Docker Hub](https://hub.docker.com/r/tiredofit/redis)
+Builds of the image are available on [Docker Hub](https://hub.docker.com/r/tiredofit/valkey)
 
 ```bash
-docker pull docker.io/tiredofit/redis:(imagetag)
+docker pull docker.io/tiredofit/valkey:(imagetag)
 ```
-Builds of the image are also available on the [Github Container Registry](https://github.com/tiredofit/docker-redis/pkgs/container/docker-redis)
+Builds of the image are also available on the [Github Container Registry](https://github.com/tiredofit/docker-valkey/pkgs/container/docker-valkey)
 
 ```
-docker pull ghcr.io/tiredofit/docker-redis:(imagetag)
+docker pull ghcr.io/tiredofit/docker-valkey:(imagetag)
 ```
 
 The following image tags are available along with their tagged release based on what's written in the [Changelog](CHANGELOG.md):
@@ -157,6 +157,6 @@ MIT. See [LICENSE](LICENSE) for more details.
 
 ## References
 
-* https://redis.org/
+* https://valkey.io/
 
 
