@@ -1,3 +1,9 @@
+## 8-2.20.0 2024-09-15 <dave at tiredofit dot ca>
+
+   ### Added
+      - Valkey 8.0.0
+
+
 ## 7-2.19.0 2024-07-02 <dave at tiredofit dot ca>
 
    ### Added

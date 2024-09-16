@@ -6,7 +6,7 @@ LABEL maintainer="Dave Conroy (github.com/tiredofit)"
 
 ARG VALKEY_VERSION
 
-ENV VALKEY_VERSION=${VALKEY_VERSION:-"7.2.5"} \
+ENV VALKEY_VERSION=${VALKEY_VERSION:-"8.0.0"} \
     VALKEY_REPO_URL=${VALKEY_REPO_URL:-"https://github.com/valkey-io/valkey"} \
     CONTAINER_ENABLE_MESSAGING=FALSE \
     IMAGE_NAME="tiredofit/valkey" \
